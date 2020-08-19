@@ -1,0 +1,21 @@
+sudo iptables -F
+sudo iptables -A OUTPUT -j NFQUEUE
+sudo iptables -A INPUT -j NFQUEUE
+
+gcc -o netfilter-test netfilter-test.cpp -lnetfilter_queue
+sudo ./netfilter-test test.gilgil.net
+
+entering callback
+pkt received
+hw_protocol=0x0800 hook=1 id=10 hw_src_addr=00:50:56:e3:d7:0e indev=2 payload_len=477 
+DROP PKT...
+
+entering callback
+pkt received
+hw_protocol=0x0800 hook=1 id=11 hw_src_addr=00:50:56:e3:d7:0e indev=2 payload_len=477 
+DROP PKT...
+
+entering callback
+pkt received
+hw_protocol=0x0800 hook=1 id=12 hw_src_addr=00:50:56:e3:d7:0e indev=2 payload_len=477 
+DROP PKT...
